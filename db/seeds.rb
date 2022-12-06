@@ -1,6 +1,6 @@
 Airline.destroy_all
 Review.destroy_all
-
+puts "start seeding"
 Airline.create([
   { 
     name: "United Airlines",
@@ -33,36 +33,37 @@ reviews = Review.create([
         title: 'Great airline',
         description: 'I had a lovely time',
         score: 5,
-        airline: Airline.sixth
+        airline_id: 1
     },
     {
         title: 'Worse airline',
         description: 'I had an awful time',
         score: 1,
-        airline: Airline.first
+        airline_id: 6
     },
     {
         title: 'Great airline',
         description: 'I had a lovely time',
         score: 5,
-        airline: Airline.fifth
+        airline_id: 4
     },
     {
         title: 'Good airline',
         description: 'I had a good time',
         score: 4,
-        airline: Airline.fourth
+        airline_id: 5
     },
     {
         title: 'Fair airline',
         description: 'I had a nice time',
         score: 3,
-        airline: Airline.third
+        airline_id: 3
     },
     {
         title: 'bad airline',
         description: 'I had a lovely time',
         score: 2,
-        airline: Airline.second
+        airline_id: 2
     }
 ])
+puts "done seeding"
