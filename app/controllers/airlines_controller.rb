@@ -18,6 +18,26 @@ class AirlinesController < ApplicationController
         end
     end
 
+    def update
+        airline = Airline.find_by(id: params[:id])
+        if airline
+         airline.update(airline_params)
+        render json: airline, status: :created 
+        else 
+            render json: {error: airline.errors.full_messages}, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+         airline = Airline.find_by(id: params[:id])
+         if airline
+            airline.delete
+            head :no_content
+         else
+            render json: {error: "Airline not found"}, status: :unprocessable_entity
+         end    
+    end
+
     private
     def airline_params
         params.permit(:name, :image_url)
