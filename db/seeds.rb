@@ -1,3 +1,6 @@
+Airline.destroy_all
+Review.destroy_all
+
 Airline.create([
   { 
     name: "United Airlines",
