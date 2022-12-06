@@ -33,12 +33,36 @@ reviews = Review.create([
         title: 'Great airline',
         description: 'I had a lovely time',
         score: 5,
-        airline: 1
+        airline: Airline.sixth
     },
     {
-        title: 'Bad airline',
-        description: 'I had a bad time',
+        title: 'Worse airline',
+        description: 'I had an awful time',
         score: 1,
-        airline: 4
+        airline: Airline.first
+    },
+    {
+        title: 'Great airline',
+        description: 'I had a lovely time',
+        score: 5,
+        airline: Airline.fifth
+    },
+    {
+        title: 'Good airline',
+        description: 'I had a good time',
+        score: 4,
+        airline: Airline.fourth
+    },
+    {
+        title: 'Fair airline',
+        description: 'I had a nice time',
+        score: 3,
+        airline: Airline.third
+    },
+    {
+        title: 'bad airline',
+        description: 'I had a lovely time',
+        score: 2,
+        airline: Airline.second
     }
 ])
