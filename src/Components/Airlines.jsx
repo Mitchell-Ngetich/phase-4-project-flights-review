@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 const Home = styled.div`
   text-align: center;
-  max-width: 100px;
+  max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
 `
 const Header = styled.div`
-  padding: 50px 50px 10px 50px
+  padding: 100px 100px 10px 100px
 
   h1 {
     font-size: 42px;
@@ -20,12 +20,11 @@ font-weight: 300;
 font-size: 25px;
 `
 const Grid = styled.div`
-// display: grid;
-grid-template-columns: repeat(1, 1fr);
-grid-gap: 2px;
-width: 10%;
-padding: 5px
-
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+grid-gap: 20px;
+width: 100%;
+padding: 20px
 `
 
 function Airlines() {
@@ -48,7 +47,7 @@ function Airlines() {
       <Home>
         <Header>
           <h1>OpenFlights</h1>
-          <Subheader>Honest, accurate airline reviews.</Subheader>
+          <Subheader>Honest, accurate and unbiased airline reviews.</Subheader>
         </Header>
         <Grid>{air}</Grid>
       </Home>
