@@ -38,8 +38,9 @@ import styled from 'styled-components';
       text-decoration: none;  
     }
   `
-  
 function Airline({airline}){
+
+  
     return (
       <Card>
         <AirlineLogo>
