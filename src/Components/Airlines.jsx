@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import Airline from "./Airline";
-import styled from "styled-components";
+import AirlineCard from "./AirlineCard";
+import styled from "styled-components"
 
 const Home = styled.div`
   text-align: center;
@@ -38,7 +38,7 @@ function Airlines() {
     }, []);
         const air = airlines.map((airline)=> {
           return ( 
-          <Airline key={airline.id} airline={airline}/>
+          <AirlineCard key={airline.id} airline={airline}/>
           )
 
         })
