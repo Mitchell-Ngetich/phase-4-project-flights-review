@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Airline from './Airline'
 import Header from './Header'
+import ReviewForm from './ReviewForm'
 
 function Combined(airline){
     const [airline, setAirline] = useState("")
@@ -14,20 +15,32 @@ function Combined(airline){
         .then((data) => console.log(data))
     }, [])
 
+    const handleChange = (e) => {
+     e.preventDefault()
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+    };
+
     return (
+      <>
         <div className="wrapper">
+          <div className="column">
+            <Header attributes={airline.data.attributes} />
+            <div className="reviews"></div>
             <div className="column">
-                <Header
-                attributes={airline.data.attributes}
-                />
-                    <div className="reviews">
-                    </div>
-                    <div className='column'>
-                        <div className='review-form'>[Review Form Goes Here.]</div>
-                    </div>
+              <ReviewForm
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                attributes = {airline.data.attributes}
+                review={review}
+              />
             </div>
+          </div>
         </div>
-    )
+      </>
+    );
 }
 
 
