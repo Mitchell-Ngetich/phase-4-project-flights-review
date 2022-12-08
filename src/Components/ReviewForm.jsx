@@ -35,20 +35,11 @@ function ReviewForm({airline}){
           <div className='share'>Share your review!</div>
           <div className="field">
             <input
-              className="input"
-              onChange={handleChange}
-              type="text"
-              name="title"
-              placeholder="Review Title"
+              className="input"onChange={handleChange}type="text"name="title"placeholder="Review Title"
             ></input>
           </div>
           <div className="field">
-            <input
-              className="input"
-              onChange={handleChange}
-              type="text"
-              name="description"
-              placeholder="Review Description"
+            <input className="input" onChange={handleChange} type="text" name="description" placeholder="Review Description"
             ></input>
           </div>
           <div className="field">
@@ -61,7 +52,6 @@ function ReviewForm({airline}){
         </form>
       </div>
     );
-
 }
 
 export default ReviewForm;
