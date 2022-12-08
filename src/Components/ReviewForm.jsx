@@ -12,7 +12,6 @@ function ReviewForm({airline}){
       console.log(e.target.value);
      }
 
-
     const handleSubmit = (e) => {
       e.preventDefault()
 

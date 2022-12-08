@@ -4,17 +4,19 @@
   box-sizing: border-box;
 }
 .wrapper{
-background:white;
-  padding:20px;
-  margin-left: 15px;
-  border-radius: 0;
+  background:yellowgreen;
+  padding:0px;
+  margin-right: -5%;
+  border-radius: 10px;
   padding-bottom:40px;
   border-left: 1px solid rgba(0,0,0,0.1);
   height: 60vh;
   padding-top: 10px;
   background: black;
-  padding-right: 90px;
-  padding-left: 10px;
+  padding-right: 30px;
+  padding-left: 5px;
+  float: right;
+   width: 60%;
 }
 .field{
     border-radius: 4px;
@@ -45,6 +47,7 @@ background:white;
   overflow: hidden;
   flex-direction: row-reverse;
   position: relative;
+  padding-right: 10%;
   }
   .share{
     font-size:20px;
