@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
+import './ReviewForm.css'
 
 
 function ReviewForm({airline}){
@@ -32,9 +32,10 @@ function ReviewForm({airline}){
     return (
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
-          <div>Have an experience? Share your review!</div>
+          <div className='share'>Share your review!</div>
           <div className="field">
             <input
+              className="input"
               onChange={handleChange}
               type="text"
               name="title"
@@ -43,19 +44,20 @@ function ReviewForm({airline}){
           </div>
           <div className="field">
             <input
+              className="input"
               onChange={handleChange}
               type="text"
               name="description"
               placeholder="Review Description"
             ></input>
           </div>
-          <div className='field'>
+          <div className="field">
             <div className="rating-container">
               <div className="rating-title-text">Rate This Airline</div>
               [Star Rating Here]
             </div>
           </div>
-          <button type="submit">Create Review</button>
+          <button className='submit' type="submit">Create Review</button>
         </form>
       </div>
     );
