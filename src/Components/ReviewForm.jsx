@@ -47,7 +47,7 @@ function ReviewForm({airline}){
               [Star Rating Here]
             </div>
           </div>
-          <button className='submit' type="submit">Create Review</button>
+          <button className='submit' type="submit">Submit Your Review</button>
         </form>
       </div>
     );
