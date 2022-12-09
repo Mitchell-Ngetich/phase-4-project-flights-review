@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import './List.css'
+import "./Home.css";
 
 
 
@@ -41,7 +42,7 @@ function SignUpForm({ onLogin }) {
         <Input
           type="text"
           id="username"
-          placeholder="Enter Your Username"
+          placeholder="Enter Username"
           autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -52,7 +53,7 @@ function SignUpForm({ onLogin }) {
         <Input
           type="password"
           id="password"
-          placeholder="Enter Your Password"
+          placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
@@ -63,17 +64,19 @@ function SignUpForm({ onLogin }) {
         <Input
           type="password"
           id="password"
-          placeholder="Confirm Your Password"
+          placeholder="Confirm Password"
           value={password}
           onChange={(e) => setConfirmPassword(e.target.value)}
           autoComplete="current-password"
         />
       </FormField>
       <FormField>
-        <Button type="submit">{isLoading ? "Loading..." : ""}</Button>
-        <NavLink to="/airlines" className="list">
-          Sign Up
-        </NavLink>
+        <Button classname="readmore" type="submit">
+          {isLoading ? "Loading..." : ""}
+          <NavLink to="/airlines" className="readmore">
+            Sign Up
+          </NavLink>
+        </Button>
       </FormField>
       <FormField>
         {errors.map((err) => (
