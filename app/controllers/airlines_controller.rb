@@ -6,7 +6,7 @@ class AirlinesController < ApplicationController
 
     def show
         airline = Airline.find_by(id: params[:id])
-        render json: airline
+        render json: airline, serializer: AirlineandReviewsSerializer
     end
 
     def create
