@@ -45,7 +45,7 @@ function AirlineCard({ airline }) {
       <AirlineName>{airline.name}</AirlineName>
       <div className="airline-score">{airline.avg_score}</div>
       <LinkWrapper>
-        <Link to={`/airlines/${airline.id}`}>View Airlines</Link>
+        <Link to={`/airlines/${airline.id}`}> View and Add Review</Link>
       </LinkWrapper>
     </Card>
   );

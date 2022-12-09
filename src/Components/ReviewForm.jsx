@@ -42,10 +42,6 @@ function ReviewForm({airline}){
             ></input>
           </div>
           <div className="field">
-            <div className="rating-container">
-              <div className="rating-title-text">Rate This Airline</div>
-              [Star Rating Here]
-            </div>
           </div>
           <button className='submit' type="submit">Submit Your Review</button>
         </form>
