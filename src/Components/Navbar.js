@@ -5,9 +5,14 @@ import { NavLink } from "react-router-dom";
 function Navbar(){
   return (
     <nav>
-      <NavLink to="/signup" className="read">
-        <button class="btn">click here to navigate signup page </button>
-      </NavLink>
+      <div>
+        <NavLink to="/signup" className="btn">
+          <button class="btn">SignUp </button>
+        </NavLink>
+        <NavLink to="/">
+          <button class="read">Home</button>
+        </NavLink>
+      </div>
       <h1>Welcome Home! Let's hear your reviews 💑</h1>
     </nav>
   );
