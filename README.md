@@ -1,4 +1,4 @@
-# Flights Review app
+# Flights Review Website
 
 ### (School Project)
 
