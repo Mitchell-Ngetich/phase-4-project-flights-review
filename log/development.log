@@ -2338,3 +2338,725 @@ Processing by AirlinesController#show as */*
 Completed 200 OK in 16ms (Views: 11.9ms | ActiveRecord: 0.4ms | Allocations: 2018)
 
 
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (58.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (55.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirlines (20221205161053)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "airlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "slug" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161053"]]
+  [1m[36mTRANSACTION (59.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20221205161220)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "score" integer, "airline_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_3a3d57cfdb"
+FOREIGN KEY ("airline_id")
+  REFERENCES "airlines" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_airline_id" ON "reviews" ("airline_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161220"]]
+  [1m[36mTRANSACTION (57.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221210214325)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221210214325"]]
+  [1m[36mTRANSACTION (60.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-10 22:05:45.302565"], ["updated_at", "2022-12-10 22:05:45.302565"]]
+  [1m[36mTRANSACTION (44.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "United Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/United-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:05:45.407593"], ["updated_at", "2022-12-10 22:05:45.407593"]]
+  [1m[36mTRANSACTION (40.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Southwest"], ["image_url", "https://open-flights.s3.amazonaws.com/Southwest-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:05:45.453565"], ["updated_at", "2022-12-10 22:05:45.453565"]]
+  [1m[36mTRANSACTION (40.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Delta"], ["image_url", "https://open-flights.s3.amazonaws.com/Delta.png"], ["slug", nil], ["created_at", "2022-12-10 22:05:45.499192"], ["updated_at", "2022-12-10 22:05:45.499192"]]
+  [1m[36mTRANSACTION (40.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alaska Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/Alaska-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:05:45.544731"], ["updated_at", "2022-12-10 22:05:45.544731"]]
+  [1m[36mTRANSACTION (39.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "JetBlue"], ["image_url", "https://open-flights.s3.amazonaws.com/JetBlue.png"], ["slug", nil], ["created_at", "2022-12-10 22:05:45.589551"], ["updated_at", "2022-12-10 22:05:45.589551"]]
+  [1m[36mTRANSACTION (61.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "American Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/American-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:05:45.657738"], ["updated_at", "2022-12-10 22:05:45.657738"]]
+  [1m[36mTRANSACTION (39.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Great airline"], ["description", "I had a lovely time"], ["score", 5], ["airline_id", 1], ["created_at", "2022-12-10 22:05:45.717976"], ["updated_at", "2022-12-10 22:05:45.717976"]]
+  [1m[36mTRANSACTION (47.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Worse airline"], ["description", "I had an awful time"], ["score", 1], ["airline_id", 6], ["created_at", "2022-12-10 22:05:45.774585"], ["updated_at", "2022-12-10 22:05:45.774585"]]
+  [1m[36mTRANSACTION (37.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Great airline"], ["description", "I had a lovely time"], ["score", 5], ["airline_id", 4], ["created_at", "2022-12-10 22:05:45.820561"], ["updated_at", "2022-12-10 22:05:45.820561"]]
+  [1m[36mTRANSACTION (72.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Good airline"], ["description", "I had a good time"], ["score", 4], ["airline_id", 5], ["created_at", "2022-12-10 22:05:45.901120"], ["updated_at", "2022-12-10 22:05:45.901120"]]
+  [1m[36mTRANSACTION (38.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Fair airline"], ["description", "I had a nice time"], ["score", 3], ["airline_id", 3], ["created_at", "2022-12-10 22:05:45.946785"], ["updated_at", "2022-12-10 22:05:45.946785"]]
+  [1m[36mTRANSACTION (48.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "bad airline"], ["description", "I had a lovely time"], ["score", 2], ["airline_id", 2], ["created_at", "2022-12-10 22:05:46.003255"], ["updated_at", "2022-12-10 22:05:46.003255"]]
+  [1m[36mTRANSACTION (38.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (83.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (55.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirlines (20221205161053)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "airlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "slug" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161053"]]
+  [1m[36mTRANSACTION (49.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20221205161220)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "score" integer, "airline_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_3a3d57cfdb"
+FOREIGN KEY ("airline_id")
+  REFERENCES "airlines" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_airline_id" ON "reviews" ("airline_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161220"]]
+  [1m[36mTRANSACTION (58.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221210214325)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221210214325"]]
+  [1m[36mTRANSACTION (59.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-10 22:06:38.598169"], ["updated_at", "2022-12-10 22:06:38.598169"]]
+  [1m[36mTRANSACTION (45.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.5ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "United Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/United-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:06:38.698023"], ["updated_at", "2022-12-10 22:06:38.698023"]]
+  [1m[36mTRANSACTION (44.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Southwest"], ["image_url", "https://open-flights.s3.amazonaws.com/Southwest-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:06:38.749747"], ["updated_at", "2022-12-10 22:06:38.749747"]]
+  [1m[36mTRANSACTION (40.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Delta"], ["image_url", "https://open-flights.s3.amazonaws.com/Delta.png"], ["slug", nil], ["created_at", "2022-12-10 22:06:38.795406"], ["updated_at", "2022-12-10 22:06:38.795406"]]
+  [1m[36mTRANSACTION (39.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alaska Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/Alaska-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:06:38.840528"], ["updated_at", "2022-12-10 22:06:38.840528"]]
+  [1m[36mTRANSACTION (41.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "JetBlue"], ["image_url", "https://open-flights.s3.amazonaws.com/JetBlue.png"], ["slug", nil], ["created_at", "2022-12-10 22:06:38.887916"], ["updated_at", "2022-12-10 22:06:38.887916"]]
+  [1m[36mTRANSACTION (38.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "American Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/American-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:06:38.932709"], ["updated_at", "2022-12-10 22:06:38.932709"]]
+  [1m[36mTRANSACTION (40.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Great airline"], ["description", "I had a lovely time"], ["score", 5], ["airline_id", 1], ["created_at", "2022-12-10 22:06:38.994419"], ["updated_at", "2022-12-10 22:06:38.994419"]]
+  [1m[36mTRANSACTION (47.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Worse airline"], ["description", "I had an awful time"], ["score", 1], ["airline_id", 6], ["created_at", "2022-12-10 22:06:39.050425"], ["updated_at", "2022-12-10 22:06:39.050425"]]
+  [1m[36mTRANSACTION (48.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Great airline"], ["description", "I had a lovely time"], ["score", 5], ["airline_id", 4], ["created_at", "2022-12-10 22:06:39.107795"], ["updated_at", "2022-12-10 22:06:39.107795"]]
+  [1m[36mTRANSACTION (47.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Good airline"], ["description", "I had a good time"], ["score", 4], ["airline_id", 5], ["created_at", "2022-12-10 22:06:39.162598"], ["updated_at", "2022-12-10 22:06:39.162598"]]
+  [1m[36mTRANSACTION (138.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Fair airline"], ["description", "I had a nice time"], ["score", 3], ["airline_id", 3], ["created_at", "2022-12-10 22:06:39.309042"], ["updated_at", "2022-12-10 22:06:39.309042"]]
+  [1m[36mTRANSACTION (48.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "bad airline"], ["description", "I had a lovely time"], ["score", 2], ["airline_id", 2], ["created_at", "2022-12-10 22:06:39.365720"], ["updated_at", "2022-12-10 22:06:39.365720"]]
+  [1m[36mTRANSACTION (38.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (77.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (55.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirlines (20221205161053)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "airlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "slug" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161053"]]
+  [1m[36mTRANSACTION (52.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20221205161220)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "score" integer, "airline_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_3a3d57cfdb"
+FOREIGN KEY ("airline_id")
+  REFERENCES "airlines" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_airline_id" ON "reviews" ("airline_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161220"]]
+  [1m[36mTRANSACTION (57.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221210214325)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221210214325"]]
+  [1m[36mTRANSACTION (59.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-10 22:07:17.431839"], ["updated_at", "2022-12-10 22:07:17.431839"]]
+  [1m[36mTRANSACTION (41.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mAirline Load (0.5ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.6ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "United Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/United-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:07:17.515993"], ["updated_at", "2022-12-10 22:07:17.515993"]]
+  [1m[36mTRANSACTION (45.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Southwest"], ["image_url", "https://open-flights.s3.amazonaws.com/Southwest-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:07:17.569315"], ["updated_at", "2022-12-10 22:07:17.569315"]]
+  [1m[36mTRANSACTION (40.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Delta"], ["image_url", "https://open-flights.s3.amazonaws.com/Delta.png"], ["slug", nil], ["created_at", "2022-12-10 22:07:17.614614"], ["updated_at", "2022-12-10 22:07:17.614614"]]
+  [1m[36mTRANSACTION (40.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alaska Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/Alaska-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:07:17.660588"], ["updated_at", "2022-12-10 22:07:17.660588"]]
+  [1m[36mTRANSACTION (40.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "JetBlue"], ["image_url", "https://open-flights.s3.amazonaws.com/JetBlue.png"], ["slug", nil], ["created_at", "2022-12-10 22:07:17.705884"], ["updated_at", "2022-12-10 22:07:17.705884"]]
+  [1m[36mTRANSACTION (40.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "American Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/American-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:07:17.751555"], ["updated_at", "2022-12-10 22:07:17.751555"]]
+  [1m[36mTRANSACTION (39.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Great airline"], ["description", "I had a lovely time"], ["score", 5], ["airline_id", 1], ["created_at", "2022-12-10 22:07:17.813459"], ["updated_at", "2022-12-10 22:07:17.813459"]]
+  [1m[36mTRANSACTION (46.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Worse airline"], ["description", "I had an awful time"], ["score", 1], ["airline_id", 6], ["created_at", "2022-12-10 22:07:17.867667"], ["updated_at", "2022-12-10 22:07:17.867667"]]
+  [1m[36mTRANSACTION (39.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Great airline"], ["description", "I had a lovely time"], ["score", 5], ["airline_id", 4], ["created_at", "2022-12-10 22:07:17.915720"], ["updated_at", "2022-12-10 22:07:17.915720"]]
+  [1m[36mTRANSACTION (107.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Good airline"], ["description", "I had a good time"], ["score", 4], ["airline_id", 5], ["created_at", "2022-12-10 22:07:18.030553"], ["updated_at", "2022-12-10 22:07:18.030553"]]
+  [1m[36mTRANSACTION (72.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Fair airline"], ["description", "I had a nice time"], ["score", 3], ["airline_id", 3], ["created_at", "2022-12-10 22:07:18.110407"], ["updated_at", "2022-12-10 22:07:18.110407"]]
+  [1m[36mTRANSACTION (126.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "bad airline"], ["description", "I had a lovely time"], ["score", 2], ["airline_id", 2], ["created_at", "2022-12-10 22:07:18.245492"], ["updated_at", "2022-12-10 22:07:18.245492"]]
+  [1m[36mTRANSACTION (48.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "mitch"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."password" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (147.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (55.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirlines (20221205161053)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "airlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "slug" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161053"]]
+  [1m[36mTRANSACTION (57.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20221205161220)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "score" integer, "airline_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_3a3d57cfdb"
+FOREIGN KEY ("airline_id")
+  REFERENCES "airlines" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_airline_id" ON "reviews" ("airline_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161220"]]
+  [1m[36mTRANSACTION (54.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221210214325)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221210214325"]]
+  [1m[36mTRANSACTION (57.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-10 22:11:15.937391"], ["updated_at", "2022-12-10 22:11:15.937391"]]
+  [1m[36mTRANSACTION (39.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.5ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "United Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/United-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:11:16.037515"], ["updated_at", "2022-12-10 22:11:16.037515"]]
+  [1m[36mTRANSACTION (42.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.6ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Southwest"], ["image_url", "https://open-flights.s3.amazonaws.com/Southwest-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:11:16.088804"], ["updated_at", "2022-12-10 22:11:16.088804"]]
+  [1m[36mTRANSACTION (46.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Delta"], ["image_url", "https://open-flights.s3.amazonaws.com/Delta.png"], ["slug", nil], ["created_at", "2022-12-10 22:11:16.143830"], ["updated_at", "2022-12-10 22:11:16.143830"]]
+  [1m[36mTRANSACTION (40.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alaska Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/Alaska-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:11:16.190136"], ["updated_at", "2022-12-10 22:11:16.190136"]]
+  [1m[36mTRANSACTION (38.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.6ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "JetBlue"], ["image_url", "https://open-flights.s3.amazonaws.com/JetBlue.png"], ["slug", nil], ["created_at", "2022-12-10 22:11:16.235523"], ["updated_at", "2022-12-10 22:11:16.235523"]]
+  [1m[36mTRANSACTION (47.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "American Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/American-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:11:16.291417"], ["updated_at", "2022-12-10 22:11:16.291417"]]
+  [1m[36mTRANSACTION (39.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Great airline"], ["description", "I had a lovely time"], ["score", 5], ["airline_id", 1], ["created_at", "2022-12-10 22:11:16.352660"], ["updated_at", "2022-12-10 22:11:16.352660"]]
+  [1m[36mTRANSACTION (47.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Worse airline"], ["description", "I had an awful time"], ["score", 1], ["airline_id", 6], ["created_at", "2022-12-10 22:11:16.407967"], ["updated_at", "2022-12-10 22:11:16.407967"]]
+  [1m[36mTRANSACTION (38.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Great airline"], ["description", "I had a lovely time"], ["score", 5], ["airline_id", 4], ["created_at", "2022-12-10 22:11:16.454434"], ["updated_at", "2022-12-10 22:11:16.454434"]]
+  [1m[36mTRANSACTION (48.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Good airline"], ["description", "I had a good time"], ["score", 4], ["airline_id", 5], ["created_at", "2022-12-10 22:11:16.510950"], ["updated_at", "2022-12-10 22:11:16.510950"]]
+  [1m[36mTRANSACTION (37.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Fair airline"], ["description", "I had a nice time"], ["score", 3], ["airline_id", 3], ["created_at", "2022-12-10 22:11:16.556193"], ["updated_at", "2022-12-10 22:11:16.556193"]]
+  [1m[36mTRANSACTION (37.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "bad airline"], ["description", "I had a lovely time"], ["score", 2], ["airline_id", 2], ["created_at", "2022-12-10 22:11:16.601524"], ["updated_at", "2022-12-10 22:11:16.601524"]]
+  [1m[36mTRANSACTION (39.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "mitch"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."password" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (57.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (55.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirlines (20221205161053)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "airlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "slug" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161053"]]
+  [1m[36mTRANSACTION (52.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20221205161220)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "score" integer, "user_id_id" integer NOT NULL, "airline_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_dd9608186a"
+FOREIGN KEY ("user_id_id")
+  REFERENCES "user_ids" ("id")
+, CONSTRAINT "fk_rails_3a3d57cfdb"
+FOREIGN KEY ("airline_id")
+  REFERENCES "airlines" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id_id" ON "reviews" ("user_id_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_airline_id" ON "reviews" ("airline_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161220"]]
+  [1m[36mTRANSACTION (76.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221210214325)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221210214325"]]
+  [1m[36mTRANSACTION (80.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-10 22:23:57.503945"], ["updated_at", "2022-12-10 22:23:57.503945"]]
+  [1m[36mTRANSACTION (43.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "United Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/United-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:23:57.604811"], ["updated_at", "2022-12-10 22:23:57.604811"]]
+  [1m[36mTRANSACTION (44.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Southwest"], ["image_url", "https://open-flights.s3.amazonaws.com/Southwest-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:23:57.654042"], ["updated_at", "2022-12-10 22:23:57.654042"]]
+  [1m[36mTRANSACTION (39.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Delta"], ["image_url", "https://open-flights.s3.amazonaws.com/Delta.png"], ["slug", nil], ["created_at", "2022-12-10 22:23:57.699709"], ["updated_at", "2022-12-10 22:23:57.699709"]]
+  [1m[36mTRANSACTION (39.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alaska Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/Alaska-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:23:57.744725"], ["updated_at", "2022-12-10 22:23:57.744725"]]
+  [1m[36mTRANSACTION (40.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "JetBlue"], ["image_url", "https://open-flights.s3.amazonaws.com/JetBlue.png"], ["slug", nil], ["created_at", "2022-12-10 22:23:57.789987"], ["updated_at", "2022-12-10 22:23:57.789987"]]
+  [1m[36mTRANSACTION (40.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "American Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/American-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:23:57.835739"], ["updated_at", "2022-12-10 22:23:57.835739"]]
+  [1m[36mTRANSACTION (39.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "user_id_id", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Great airline"], ["description", "I had a lovely time"], ["score", 5], ["user_id_id", nil], ["airline_id", 1], ["created_at", "2022-12-10 22:23:57.897360"], ["updated_at", "2022-12-10 22:23:57.897360"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (121.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (56.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirlines (20221205161053)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "airlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "slug" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161053"]]
+  [1m[36mTRANSACTION (72.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20221205161220)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "score" integer, "user_id" integer NOT NULL, "airline_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_3a3d57cfdb"
+FOREIGN KEY ("airline_id")
+  REFERENCES "airlines" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_airline_id" ON "reviews" ("airline_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161220"]]
+  [1m[36mTRANSACTION (52.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221210214325)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221210214325"]]
+  [1m[36mTRANSACTION (57.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-10 22:29:24.573685"], ["updated_at", "2022-12-10 22:29:24.573685"]]
+  [1m[36mTRANSACTION (40.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (84.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (55.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirlines (20221205161053)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "airlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "slug" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161053"]]
+  [1m[36mTRANSACTION (141.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20221205161220)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "score" integer, "user_id" integer NOT NULL, "airline_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_3a3d57cfdb"
+FOREIGN KEY ("airline_id")
+  REFERENCES "airlines" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_airline_id" ON "reviews" ("airline_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161220"]]
+  [1m[36mTRANSACTION (52.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221210214325)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221210214325"]]
+  [1m[36mTRANSACTION (54.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-10 22:30:21.873717"], ["updated_at", "2022-12-10 22:30:21.873717"]]
+  [1m[36mTRANSACTION (43.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "United Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/United-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:30:21.972079"], ["updated_at", "2022-12-10 22:30:21.972079"]]
+  [1m[36mTRANSACTION (48.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.5ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Southwest"], ["image_url", "https://open-flights.s3.amazonaws.com/Southwest-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:30:22.026578"], ["updated_at", "2022-12-10 22:30:22.026578"]]
+  [1m[36mTRANSACTION (37.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Delta"], ["image_url", "https://open-flights.s3.amazonaws.com/Delta.png"], ["slug", nil], ["created_at", "2022-12-10 22:30:22.071049"], ["updated_at", "2022-12-10 22:30:22.071049"]]
+  [1m[36mTRANSACTION (40.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alaska Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/Alaska-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:30:22.116706"], ["updated_at", "2022-12-10 22:30:22.116706"]]
+  [1m[36mTRANSACTION (40.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.5ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "JetBlue"], ["image_url", "https://open-flights.s3.amazonaws.com/JetBlue.png"], ["slug", nil], ["created_at", "2022-12-10 22:30:22.162618"], ["updated_at", "2022-12-10 22:30:22.162618"]]
+  [1m[36mTRANSACTION (70.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "American Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/American-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:30:22.240259"], ["updated_at", "2022-12-10 22:30:22.240259"]]
+  [1m[36mTRANSACTION (42.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.4ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.8ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "description", "score", "user_id", "airline_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Great airline"], ["description", "I had a lovely time"], ["score", 5], ["user_id", nil], ["airline_id", 1], ["created_at", "2022-12-10 22:30:22.308676"], ["updated_at", "2022-12-10 22:30:22.308676"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (126.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (55.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirlines (20221205161053)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "airlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "slug" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161053"]]
+  [1m[36mTRANSACTION (50.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20221205161220)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "score" integer, "user_id" integer NOT NULL, "airline_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_3a3d57cfdb"
+FOREIGN KEY ("airline_id")
+  REFERENCES "airlines" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_airline_id" ON "reviews" ("airline_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161220"]]
+  [1m[36mTRANSACTION (52.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221210214325)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221210214325"]]
+  [1m[36mTRANSACTION (58.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-10 22:36:13.438040"], ["updated_at", "2022-12-10 22:36:13.438040"]]
+  [1m[36mTRANSACTION (43.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines"[0m
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.6ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "United Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/United-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:36:13.590807"], ["updated_at", "2022-12-10 22:36:13.590807"]]
+  [1m[36mTRANSACTION (46.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Southwest"], ["image_url", "https://open-flights.s3.amazonaws.com/Southwest-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:36:13.646036"], ["updated_at", "2022-12-10 22:36:13.646036"]]
+  [1m[36mTRANSACTION (39.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Delta"], ["image_url", "https://open-flights.s3.amazonaws.com/Delta.png"], ["slug", nil], ["created_at", "2022-12-10 22:36:13.691573"], ["updated_at", "2022-12-10 22:36:13.691573"]]
+  [1m[36mTRANSACTION (39.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alaska Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/Alaska-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:36:13.737851"], ["updated_at", "2022-12-10 22:36:13.737851"]]
+  [1m[36mTRANSACTION (38.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.6ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "JetBlue"], ["image_url", "https://open-flights.s3.amazonaws.com/JetBlue.png"], ["slug", nil], ["created_at", "2022-12-10 22:36:13.783609"], ["updated_at", "2022-12-10 22:36:13.783609"]]
+  [1m[36mTRANSACTION (47.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "American Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/American-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:36:13.839938"], ["updated_at", "2022-12-10 22:36:13.839938"]]
+  [1m[36mTRANSACTION (144.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "mitch"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."password" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (144.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (55.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirlines (20221205161053)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "airlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "slug" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161053"]]
+  [1m[36mTRANSACTION (50.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20221205161220)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "score" integer, "user_id" integer NOT NULL, "airline_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_3a3d57cfdb"
+FOREIGN KEY ("airline_id")
+  REFERENCES "airlines" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_airline_id" ON "reviews" ("airline_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161220"]]
+  [1m[36mTRANSACTION (53.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221210214325)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password" varchar, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221210214325"]]
+  [1m[36mTRANSACTION (59.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-10 22:39:02.867184"], ["updated_at", "2022-12-10 22:39:02.867184"]]
+  [1m[36mTRANSACTION (43.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "United Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/United-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:39:02.971752"], ["updated_at", "2022-12-10 22:39:02.971752"]]
+  [1m[36mTRANSACTION (41.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.6ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Southwest"], ["image_url", "https://open-flights.s3.amazonaws.com/Southwest-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:39:03.018152"], ["updated_at", "2022-12-10 22:39:03.018152"]]
+  [1m[36mTRANSACTION (48.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.5ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Delta"], ["image_url", "https://open-flights.s3.amazonaws.com/Delta.png"], ["slug", nil], ["created_at", "2022-12-10 22:39:03.074571"], ["updated_at", "2022-12-10 22:39:03.074571"]]
+  [1m[36mTRANSACTION (38.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.5ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alaska Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/Alaska-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:39:03.119991"], ["updated_at", "2022-12-10 22:39:03.119991"]]
+  [1m[36mTRANSACTION (38.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.5ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "JetBlue"], ["image_url", "https://open-flights.s3.amazonaws.com/JetBlue.png"], ["slug", nil], ["created_at", "2022-12-10 22:39:03.165704"], ["updated_at", "2022-12-10 22:39:03.165704"]]
+  [1m[36mTRANSACTION (61.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.5ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "American Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/American-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:39:03.233241"], ["updated_at", "2022-12-10 22:39:03.233241"]]
+  [1m[36mTRANSACTION (93.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (89.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (55.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAirlines (20221205161053)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "airlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image_url" varchar, "slug" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161053"]]
+  [1m[36mTRANSACTION (59.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20221205161220)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "score" integer, "user_id" integer NOT NULL, "airline_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_3a3d57cfdb"
+FOREIGN KEY ("airline_id")
+  REFERENCES "airlines" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_reviews_on_airline_id" ON "reviews" ("airline_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221205161220"]]
+  [1m[36mTRANSACTION (50.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221210214325)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221210214325"]]
+  [1m[36mTRANSACTION (59.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-10 22:40:14.398576"], ["updated_at", "2022-12-10 22:40:14.398576"]]
+  [1m[36mTRANSACTION (42.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "United Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/United-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:40:14.493365"], ["updated_at", "2022-12-10 22:40:14.493365"]]
+  [1m[36mTRANSACTION (37.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Southwest"], ["image_url", "https://open-flights.s3.amazonaws.com/Southwest-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:40:14.537035"], ["updated_at", "2022-12-10 22:40:14.537035"]]
+  [1m[36mTRANSACTION (38.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.4ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Delta"], ["image_url", "https://open-flights.s3.amazonaws.com/Delta.png"], ["slug", nil], ["created_at", "2022-12-10 22:40:14.582529"], ["updated_at", "2022-12-10 22:40:14.582529"]]
+  [1m[36mTRANSACTION (37.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.3ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alaska Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/Alaska-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:40:14.627114"], ["updated_at", "2022-12-10 22:40:14.627114"]]
+  [1m[36mTRANSACTION (42.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.2ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "JetBlue"], ["image_url", "https://open-flights.s3.amazonaws.com/JetBlue.png"], ["slug", nil], ["created_at", "2022-12-10 22:40:14.673911"], ["updated_at", "2022-12-10 22:40:14.673911"]]
+  [1m[36mTRANSACTION (42.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Create (0.6ms)[0m  [1m[32mINSERT INTO "airlines" ("name", "image_url", "slug", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "American Airlines"], ["image_url", "https://open-flights.s3.amazonaws.com/American-Airlines.png"], ["slug", nil], ["created_at", "2022-12-10 22:40:14.720329"], ["updated_at", "2022-12-10 22:40:14.720329"]]
+  [1m[36mTRANSACTION (126.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.2ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAirline Load (0.1ms)[0m  [1m[34mSELECT "airlines".* FROM "airlines" WHERE "airlines"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "mitch"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."password" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m

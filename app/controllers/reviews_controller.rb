@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-   # before_action :authenticate
+    before_action :authenticate
 
       # POST 
       def create
