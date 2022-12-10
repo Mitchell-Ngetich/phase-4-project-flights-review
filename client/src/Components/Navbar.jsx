@@ -1,8 +1,7 @@
-import React from 'react'
+import React from "react";
 import { NavLink } from "react-router-dom";
 
-
-function Navbar(){
+function Navbar() {
   return (
     <nav>
       <div>
@@ -16,6 +15,6 @@ function Navbar(){
       <h1>Welcome Home! Let's hear your reviews 💑</h1>
     </nav>
   );
-} 
+}
 
 export default Navbar;
