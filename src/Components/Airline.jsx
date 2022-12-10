@@ -54,15 +54,22 @@ function Airline(){
        .then((resp) => resp.json())
        .then((data) => setAirline(data));
    }, [id]);
+      // console.log(airline.reviews)
+      // let review = airline.reviews;
+      // console.log(review);
 
     return (
       <Card>
         <AirlineLogo>
-          <img src={airline?.image_url || ""} alt={airline?.name || "airlineName"} />
+          <img
+            src={airline?.image_url || ""}
+            alt={airline?.name || "airlineName"}
+          />
         </AirlineLogo>
-        <AirlineName>{airline?.name || ""}</AirlineName>
+        {/* <div>{review}</div> */}
+        <AirlineName>{airline?.name || ""} </AirlineName>
         <div className="airline-score">{airline?.avg_score || ""}</div>
-        <ReviewForm/>
+        <ReviewForm airline={airline} />
       </Card>
     );
 }
