@@ -1,39 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, } from "react";
 import "./ReviewForm.css";
+import { useParams } from "react-router-dom";
 
-function ReviewForm({ airline }) {
+
+function ReviewForm() {
   //  const review = airline.reviews
-  const [title, setTiltle] = useState({});
-  const [description, setDescription] = useState({});
-  const [score, setScore] = useState({});
-
+   let { id } = useParams();
+  const [formData, setformData] = useState({
+    title: "",
+    description: "",
+    airline_id: id
+  });
+    console.log(formData)
   const handleChange = (e) => {
-    e.preventDefault();
-    console.log(e.target.value);
+    const { name, value } = e.target;
+    setformData((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`/airlines`, {
+
+   
+  return fetch(`http://localhost:3000/reviews`, {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        title: title,
-        description: description,
-        score: score,
-      }),
-    });
-    console.log(airline);
+      body: JSON.stringify(
+       formData
+      ),
+    }) .then((response) => {
+      if (response.ok){
+        alert(response)
+      }
+      else{
+        alert("failed")
+      }
 
-    alert("added successfully");
+    } )
+    .then(window.location.reload()) 
+    // console.log(airline);
   };
+
+  
   return (
     <>
-      {/* <div>{review.title}</div>
-        <div>{review.description}</div> */}
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
           <div className="share">Share your review!</div>
@@ -43,6 +61,7 @@ function ReviewForm({ airline }) {
               onChange={handleChange}
               type="text"
               name="title"
+              value={formData.title}
               placeholder="Review Title"
             ></input>
           </div>
@@ -52,6 +71,7 @@ function ReviewForm({ airline }) {
               onChange={handleChange}
               type="text"
               name="description"
+              value={formData.description}
               placeholder="Review Description"
             ></input>
           </div>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ReviewForm from "./ReviewForm";
+import Review from './Review'
+import './Airline.css'
 
 const Card = styled.div`
   margin-left: auto;
@@ -44,28 +46,35 @@ const AirlineName = styled.div`
 function Airline() {
   let { id } = useParams();
   const [airline, setAirline] = useState({});
+  const [reviews, setReviews] = useState([]);
+
   useEffect(() => {
     // console.log(airline)
-    fetch(`/airlines/${id}`)
+    fetch(`http://localhost:3000/airlines/${id}`)
       .then((resp) => resp.json())
-      .then((data) => setAirline(data));
+      .then((data) => setAirline(data))
   }, [id]);
-  // console.log(airline.reviews)
+  // console.log(data.reviews)
   // let review = airline.reviews;
   // console.log(review);
-
+  //  console.log(airline)
+   const kq = airline.reviews?.map((review) => {
+        return <Review key={review.id} review={review} />;
+      }) || " "  
   return (
     <Card>
-      <AirlineLogo>
-        <img
-          src={airline?.image_url || ""}
-          alt={airline?.name || "airlineName"}
-        />
-      </AirlineLogo>
-      {/* <div>{review}</div> */}
-      <AirlineName>{airline?.name || ""} </AirlineName>
-      <div className="airline-score">{airline?.avg_score || ""}</div>
-      <ReviewForm airline={airline} />
+      <div className="review">
+        <AirlineLogo>
+          <img src={airline?.image_url || ""} alt={airline?.name || ""} />
+        </AirlineLogo>
+        {/* <div>{review}</div> */}
+        <AirlineName>{airline?.name || ""} </AirlineName>
+        <div className="airline-score">{airline?.avg_score || ""}</div>
+        {kq}
+      </div>
+      <div>
+        <ReviewForm airline={airline} />
+      </div>
     </Card>
   );
 }
