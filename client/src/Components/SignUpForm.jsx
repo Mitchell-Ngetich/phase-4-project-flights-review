@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import './List.css'
+import "./List.css";
 import "./Home.css";
-
-
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
