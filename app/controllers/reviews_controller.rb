@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
       def create
         review = Review.create(review_params)
         if review
-          render json: review, status: :created
+          render json: review, status: :ok
         else
           render json: {error: review.errors.full_messages}, status: :unprocessable_entity
         end
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
 
       # Strong params
       def review_params
-        params.permit(:title, :description, :score, :airline_id)
+        params.permit(:title, :description, :airline_id)
       end
 end
     
