@@ -5,37 +5,24 @@ import ReviewForm from "./ReviewForm";
 import Review from './Review'
 import './Airline.css'
 
-const Card = styled.div`
-  margin-left: auto;
-  margin-right: auto;
+const Container = styled.div`
+  display: flex;
 `;
-const AirlineLogo = styled.div`
-  background: #fff;
-  max-width: 50%;
-  width: 50%;
-  float: left;
-  height: 100vh;
-  overflow-x: scroll;
-  overflow-y: scroll;
-  overflow: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  &:last-child {
-    background: black;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-  }
-  width: 100px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 10px;
+const AirlineHeader = styled.div`
+  display: flex;
+  align-items: center;
 
   img {
-    height: 50px;
-    width: 50px;
+    height: auto;
+    width: 2rem;
     border-radius: 100%;
     border: 1px solid #efefef;
+  }
+    
+  div {
+    font-size: 25px;
+    font-weight: 700;
+    margin-left: 5px;
   }
 `;
 const AirlineName = styled.div`
@@ -54,28 +41,49 @@ function Airline() {
       .then((resp) => resp.json())
       .then((data) => setAirline(data))
   }, [id]);
-  // console.log(data.reviews)
-  // let review = airline.reviews;
-  // console.log(review);
-  //  console.log(airline)
+  
    const kq = airline.reviews?.map((review) => {
         return <Review key={review.id} review={review} />;
       }) || " "  
   return (
-    <Card>
-      <div className="review">
-        <AirlineLogo>
+    <Container>
+      <div className="reviews-column">
+        <AirlineHeader>
           <img src={airline?.image_url || ""} alt={airline?.name || ""} />
-        </AirlineLogo>
-        {/* <div>{review}</div> */}
-        <AirlineName>{airline?.name || ""} </AirlineName>
+          <div>{airline.name}</div>
+        </AirlineHeader>
+        <div className="reviews-stats">
+          <div className="reviews-stats-title"> </div>
+          <div className="reviews-stats-stars"></div>
+          <div className="reviews-stats-info"></div>
+        </div>
+        <div className="reviews-comments">
+          <div className="reviews-comments-header">
+            <div className="reviews-comments-profile"></div>
+            <div className="reviews-comments-stars">
+              <span></span>
+              <span></span>
+            </div>
+            <div className="reviews-comments-name"></div>
+          </div>
+          <div className="reviews-comments-body">
+            <div className="reviews-comments-title">{kq}</div>
+            <div className="reviews-comments-info"> </div>
+          </div>
+        </div>
+      </div>
+      <div className="reviews-form-column">
+        
+        <ReviewForm airline={airline} />
+      </div>
+      {/* <AirlineName>{airline?.name || ""} </AirlineName>
         <div className="airline-score">{airline?.avg_score || ""}</div>
         {kq}
       </div>
       <div>
         <ReviewForm airline={airline} />
-      </div>
-    </Card>
+      </div> */}
+    </Container>
   );
 }
 

@@ -3,7 +3,6 @@ class Airline < ApplicationRecord
     validates :image_url, presence: true
 
     has_many :reviews
-    has_many :users
 
     def avg_score
         reviews.average(:score).round(2).to_f

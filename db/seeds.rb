@@ -1,6 +1,5 @@
 Airline.destroy_all
 Review.destroy_all
-User.destroy_all
 
 puts "start seeding"
 
@@ -64,36 +63,36 @@ reviews = Review.create([
     },
     {
         title: 'bad airline',
-        description: 'I had a lovely time',
+        description: 'I had a bad time',
         score: 2,
         airline_id: 2
     }
 ])
 
-users = User.create([
-  { 
-    username: "mitch",
-    password_digest: "Come"
-  }, 
-  { 
-    username: "purity_k",
-    password_digest: "22G"
-  },
-  { 
-    username: "Otieno@g",
-    password_digest: "hsjy" 
-  }, 
-  { 
-    username: "Alice",
-    password_digest: "Alice@126" 
-  }, 
-  { 
-    username: "polla",
-    password_digest: "Polla36" 
-  }, 
-  { 
-    username: "fancy@jeru",
-    password_digest: "gstr@" 
-  }
-])
+#users = User.create([
+  #{ 
+    #username: "mitch",
+    #password_digest: "Come"
+  #}, 
+  #{ 
+    #username: "purity_k",
+    #password_digest: "22G"
+  #},
+  #{ 
+    #username: "Otieno@g",
+    #password_digest: "hsjy" 
+  #}, 
+  #{ 
+    #username: "Alice",
+    #password_digest: "Alice@126" 
+  #}, 
+  #{ 
+    #username: "polla",
+    #password_digest: "Polla36" 
+  #}, 
+  #{ 
+    #username: "fancy@jeru",
+    #password_digest: "gstr@" 
+  #}
+#])
 puts "done seeding"

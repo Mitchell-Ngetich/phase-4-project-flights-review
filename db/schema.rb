@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_10_214325) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_161220) do
   create_table "airlines", force: :cascade do |t|
     t.string "name"
     t.string "image_url"
@@ -23,23 +23,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_214325) do
     t.string "title"
     t.string "description"
     t.integer "score"
-    t.integer "user_id", null: false
     t.integer "airline_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["airline_id"], name: "index_reviews_on_airline_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "reviews", "airlines"
-  add_foreign_key "reviews", "users"
 end
