@@ -48,13 +48,21 @@ function ReviewForm() {
     .then(window.location.reload()) 
     // console.log(airline);
   };
+  useEffect(() => {
+    // DELETE request using fetch inside useEffect React hook
+    fetch(`http://localhost:3000/reviews/${id}`, {
+      method: "DELETE",
+    }).then(() => console.log("Delete successful"));
+
+    
+  }, []);
 
   
   return (
     <>
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
-          <div className="share">Share your review!</div>
+          <div className="share">Have an experience with this airline?  Add your review!</div>
           <div className="field">
             <input
               className="input"
