@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   get '/airlines', to: 'airlines#index'
   get '/airlines/:id', to: 'airlines#show'
   post '/airlines', to: 'airlines#create'

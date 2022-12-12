@@ -69,6 +69,7 @@ reviews = Review.create([
     }
 ])
 
+ ngetich
 #users = User.create([
   #{ 
     #username: "mitch",
@@ -95,4 +96,32 @@ reviews = Review.create([
     #password_digest: "gstr@" 
   #}
 #])
+
+users = User.create([
+  { 
+    username: "mitch",
+    password_digest: "Come"
+  }, 
+  { 
+    username: "purity_k",
+    password_digest: "22G"
+  },
+  { 
+    username: "Otieno@g",
+    password_digest: "hsjy" 
+  }, 
+  { 
+    username: "Alice",
+    password_digest: "Alice@126" 
+  }, 
+  { 
+    username: "polla",
+    password_digest: "Polla36" 
+  }, 
+  { 
+    username: "fancy@jeru",
+    password_digest: "gstr@" 
+  }
+])
+ main
 puts "done seeding"
